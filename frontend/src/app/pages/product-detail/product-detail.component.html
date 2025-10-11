@@ -1,0 +1,86 @@
+@if (product$ | async; as product) {
+  <div class="product-detail-container">
+
+    <!-- Main Product Section -->
+    <div class="product-main grid md:grid-cols-2 gap-8">
+
+      <!-- Product Image -->
+      <div class="product-image-wrapper">
+        <img
+          [src]="product.imageUrl"
+          alt="{{ product.name }}"
+          class="product-image"
+          (error)="$event.target.src='https://via.placeholder.com/400x400?text=Image+Unavailable'"
+        />
+      </div>
+
+      <!-- Product Info -->
+      <div class="product-info">
+        <h1 class="product-title">{{ product.name }}</h1>
+        <p class="product-description">{{ product.description }}</p>
+        <p class="product-price">${{ product.price }}</p>
+
+        <p class="product-stock">
+          @if (product.stock && product.stock > 0) {
+            <span class="in-stock">In stock: {{ product.stock }}</span>
+          } @else {
+            <span class="out-of-stock">Out of stock</span>
+          }
+        </p>
+
+        @if (product.stock && product.stock > 0) {
+          <div class="product-quantity">
+            <label>Qty</label>
+            <input type="number" min="1" [max]="product.stock" [(ngModel)]="qty" class="qty-input" />
+          </div>
+        }
+
+        <div class="product-actions">
+          <button class="btn-add-to-cart" (click)="addToCart(product)" [disabled]="!product.stock || product.stock <= 0">
+            Add to Cart
+          </button>
+          <button class="btn-wishlist" (click)="wishlist.toggle(product.id)">
+            {{ wishlist.has(product.id) ? '♥ Wishlisted' : '♡ Wishlist' }}
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Related Products Section -->
+  <div class="related-products-section">
+    <h3 class="section-title">Related Products</h3>
+    <div class="products-grid">
+      @for (p of products$ | async; track p.id) {
+        @if (p.category === product.category && p.id !== product.id) {
+          <a [routerLink]="['/product', p.id]" class="product-card">
+            <img [src]="p.imageUrl" alt="{{ p.name }}" class="product-card-image" (error)="$event.target.src='https://via.placeholder.com/150?text=NA'" />
+            <div class="product-card-info">
+              <div class="product-card-name">{{ p.name }}</div>
+              <div class="product-card-price">${{ p.price }}</div>
+            </div>
+          </a>
+        }
+      }
+    </div>
+  </div>
+}
+
+<!-- Recently Viewed Section -->
+<div class="recent-products-section">
+  <h3 class="section-title">Recently Viewed</h3>
+  <div class="products-grid">
+    @for (id of recently.getIds(); track id) {
+      @if (getProductById$(id) | async; as rv) {
+        <a [routerLink]="['/product', id]" class="product-card">
+          <img [src]="rv.imageUrl" alt="{{ rv.name }}" class="product-card-image" (error)="$event.target.src='https://via.placeholder.com/150?text=NA'" />
+          <div class="product-card-info">
+            <div class="product-card-name">{{ rv.name }}</div>
+            <div class="product-card-price">${{ rv.price }}</div>
+          </div>
+        </a>
+      }
+    }
+  </div>
+</div>

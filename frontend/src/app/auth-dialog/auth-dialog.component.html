@@ -1,0 +1,30 @@
+<div class="overlay">
+  <div class="dialog">
+    <h2>{{ mode === 'login' ? 'Login' : 'Sign Up' }}</h2>
+
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <label>Email</label>
+      <input type="email" formControlName="email" placeholder="Enter your email" />
+
+      <label>Password</label>
+      <input type="password" formControlName="password" placeholder="Enter your password" />
+
+      <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+      <button type="submit" class="primary">
+        {{ mode === 'login' ? 'Login' : 'Sign Up' }}
+      </button>
+    </form>
+
+    <button class="secondary" (click)="close.emit()">Cancel</button>
+
+    <div class="toggle">
+      <span>
+        {{ mode === 'login' ? "Don't have an account?" : "Already have an account?" }}
+      </span>
+      <button (click)="mode = mode === 'login' ? 'signup' : 'login'" class="link">
+        {{ mode === 'login' ? 'Sign Up' : 'Login' }}
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,103 @@
+<header class="header">
+  <div class="header-container">
+    <!-- Logo / Brand -->
+    <a routerLink="/" class="logo">
+      <img src="../../../assets/Site_logo.png" alt="Heba Logo" class="logo-img" />
+      <!-- <span class="logo-text">Heba</span> -->
+    </a>
+
+    <!-- Navigation Links -->
+    <nav class="nav">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+      <a routerLink="/cart" routerLinkActive="active">Cart</a>
+      <a routerLink="/checkout" routerLinkActive="active">Checkout</a>
+    </nav>
+
+    <!-- Right Actions -->
+    <div class="header-actions">
+      <div class="cart-btn" tabindex="0">
+        <a routerLink="/cart">
+          <i class="fas fa-shopping-cart"></i>
+          @if (cartCount$ | async; as cnt) {
+            @if (cnt > 0) { <span class="cart-count">{{ cnt }}</span> }
+          }
+        </a>
+        <div class="mini-cart" role="menu">
+          @if (cartCount$ | async; as cnt) {
+            @if (cnt === 0) { <div class="empty">Your cart is empty</div> }
+          }
+          @if (cart.items$ | async; as items) {
+            @for (i of items; track i.product.id) {
+              <div class="mc-row">
+                <img [src]="i.product.imageUrl" [alt]="i.product.name" />
+                <div class="mc-info">
+                  <div class="name" title="{{ i.product.name }}">{{ i.product.name }}</div>
+                  <div class="muted">x{{ i.qty }}</div>
+                </div>
+                <div class="price">{{ (i.product.price * i.qty) | currency }}</div>
+              </div>
+            }
+            <div class="mc-summary">
+              <div>Total</div>
+              <div>@if (total$ | async; as t) { {{ t | currency }} }</div>
+            </div>
+            <a routerLink="/cart" class="mc-btn">View Cart</a>
+            <a routerLink="/checkout" class="mc-btn primary">Checkout</a>
+          }
+        </div>
+      </div>
+     <!-- Authentication Buttons -->
+<ng-container *ngIf="!auth.isLoggedIn(); else loggedIn">
+  <button class="btn-primary" (click)="openAuthDialog('login')">Sign In</button>
+  <!-- <button class="btn-secondary" (click)="openAuthDialog('signup')">Sign Up</button> -->
+</ng-container>
+
+<ng-template #loggedIn>
+  <span class="user-name">Hi, {{ auth.currentUser.value?.email || 'User' }}</span>
+  <button class="btn-primary" (click)="logout()">Logout</button>
+</ng-template>
+
+<!-- Auth Modal -->
+<!-- Auth Modal -->
+<div *ngIf="showAuthDialog" class="auth-overlay">
+  <div class="auth-dialog animate-popup">
+    <h2>{{ authMode === 'login' ? 'Welcome Back 👋' : 'Create Account ✨' }}</h2>
+
+    <form [formGroup]="authForm" (ngSubmit)="submitAuth()">
+      <label>Email</label>
+      <input formControlName="email" placeholder="Enter your email" type="email" />
+      <div class="error" *ngIf="authForm.get('email')?.touched && authForm.get('email')?.invalid">
+        <span *ngIf="authForm.get('email')?.errors?.['required']">Email is required</span>
+        <span *ngIf="authForm.get('email')?.errors?.['email']">Invalid email format</span>
+      </div>
+
+      <label>Password</label>
+      <input formControlName="password" placeholder="Enter your password" type="password" />
+      <div class="error" *ngIf="authForm.get('password')?.touched && authForm.get('password')?.invalid">
+        <span *ngIf="authForm.get('password')?.errors?.['required']">Password is required</span>
+        <span *ngIf="authForm.get('password')?.errors?.['minlength']">Password must be at least 6 characters</span>
+      </div>
+
+      <p class="error">{{ errorMessage }}</p>
+
+      <button type="submit" class="btn-primary">
+        {{ authMode === 'login' ? 'Login' : 'Sign Up' }}
+      </button>
+
+      <button type="button" class="btn-secondary" (click)="closeAuthDialog()">Cancel</button>
+    </form>
+
+    <div class="auth-switch">
+      <span>
+        {{ authMode === 'login' ? "Don't have an account?" : "Already have an account?" }}
+      </span>
+      <button type="button" class="link-btn" (click)="authMode = authMode === 'login' ? 'signup' : 'login'">
+        {{ authMode === 'login' ? 'Sign Up' : 'Login' }}
+      </button>
+    </div>
+  </div>
+</div>
+
+    </div>
+  </div>
+</header>

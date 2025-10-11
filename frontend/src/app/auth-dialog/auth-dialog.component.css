@@ -1,0 +1,112 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(3px);
+  z-index: 1000;
+}
+
+.dialog {
+  background: #ffffff;
+  padding: 30px 40px;
+  border-radius: 12px;
+  width: 340px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.dialog h2 {
+  margin-bottom: 20px;
+  color: #222;
+  font-size: 22px;
+}
+
+.dialog input {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.dialog input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.4);
+  outline: none;
+}
+
+.dialog button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.dialog button.primary {
+  background: #007bff;
+  color: #fff;
+}
+
+.dialog button.primary:hover {
+  background: #0056d2;
+}
+
+.dialog button.secondary {
+  background: #f3f3f3;
+  color: #333;
+}
+
+.dialog button.secondary:hover {
+  background: #e1e1e1;
+}
+
+.dialog button:active {
+  transform: scale(0.97);
+}
+
+.toggle {
+  margin-top: 12px;
+  font-size: 14px;
+  color: #555;
+}
+
+.toggle .link {
+  background: none;
+  border: none;
+  color: #007bff;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.toggle .link:hover {
+  color: #0056d2;
+}
+
+.error {
+  color: #e63946;
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

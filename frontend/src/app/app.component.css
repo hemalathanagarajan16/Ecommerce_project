@@ -1,0 +1,16 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background: #0e0f12;
+  color: #e7e9ee;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 16px 64px;
+}
+a {
+  color: #8ab4ff;
+  text-decoration: none;
+}
+a:hover { text-decoration: underline; }

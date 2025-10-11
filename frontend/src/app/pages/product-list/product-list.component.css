@@ -1,0 +1,404 @@
+.image-bg{
+  background-image: '../../../assets/background.jpg'
+}
+/* Hero Section */
+.hero {
+  background-image: url('/assets/home_logo.jpg'); /* your banner image */
+  background-size: cover;         /* fills the section */
+  background-position: center;    /* centers the image */
+  background-repeat: no-repeat;   /* no tiling */
+  
+  /* responsive banner sizing */
+  width: 100%;
+  min-height: 280px;              /* adjust this for your desired banner height */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  color: #fff;
+  text-align: center;
+  padding: 2rem;
+  border-radius: 1rem;
+  margin-bottom: 2rem;
+
+  /* optional: dark overlay for readability */
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  /* position: absolute; */
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35); /* darkens the image for better text contrast */
+  z-index: 0;
+  border-radius: 1rem;
+}
+
+.hero h1,
+.hero p,
+.hero .btn-primary {
+  position: relative;
+  z-index: 1; /* ensures text is above the overlay */
+}
+
+
+.hero .btn-primary:hover {
+  background: #1e40af;
+}
+/* CSS */
+.search-bar {
+  width: 100%;
+  max-width: 380px;   /* adjust width */
+  background: #f5f8ff; /* light background */
+  border-radius: 8px;  /* rounded corners */
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1); /* subtle shadow */
+}
+
+.search-bar input {
+  border: none;
+  outline: none;
+  background: transparent;
+  flex: 1;
+  font-size: 16px;
+  color: #333;
+}
+
+.search-bar input::placeholder {
+  color: #888;
+}
+.filters.search-bar {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 8px;
+  background: #f8f9fa; /* light gray background */
+  border-radius: 8px;
+}
+.filters.search-bar input,
+.filters.search-bar select {
+  border: 1px solid #ccc;
+}
+
+
+/* .products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+} */
+/* .product-img img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.product-card {
+  background: #1f2937; 
+  border-radius: 1rem;
+  padding: 1rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+} */
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+.image-wrap {
+  display: block;
+  height: 200px;
+  overflow: hidden;
+}
+
+.image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.card:hover .image-wrap img {
+  transform: scale(1.05);
+}
+
+/* Card Body */
+.card-body {
+  padding: 1rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #f9fafb;
+}
+
+.desc {
+  font-size: 0.9rem;
+  color: #9ca3af;
+  flex-grow: 1;
+  margin-bottom: 0.75rem;
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.price {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #10b981; /* green accent */
+}
+
+/* Actions (buttons) */
+.actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn,
+.btn-outline {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+/* Solid button (Add to Cart) */
+.btn {
+  background: #2563eb;
+  color: #fff;
+  border: none;
+}
+.btn:hover {
+  background: #1e40af;
+}
+
+/* Outline button (View) */
+.btn-outline {
+  border: 1px solid #2563eb;
+  color: #2563eb;
+  text-decoration: none;
+}
+.btn-outline:hover {
+  background: #2563eb;
+  color: #fff;
+}
+
+.title {
+  font-size: 28px;
+  margin-bottom: 16px;
+}
+.filters {
+  position: sticky;
+  top: 64px;
+  backdrop-filter: blur(6px);
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid #1f2937;
+  border-radius: 12px;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 18px;
+}
+.card {
+  background: #1f2937;
+  border-radius: 1rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.image-wrap {
+  display: block;
+  aspect-ratio: 16/10;
+  overflow: hidden;
+}
+.image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .3s ease;
+}
+.card:hover .image-wrap img { transform: scale(1.04); }
+.card-body {
+  padding: 14px;
+  display: grid;
+  gap: 8px;
+}
+.name { font-weight: 700; }
+.desc { color: #a7b1c7; font-size: 14px; min-height: 38px; }
+.meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.price { font-weight: 700; }
+.actions { display: flex; gap: 8px; }
+.btn, .btn-outline {
+  
+  /* padding: 0.5em 1em;               scales with font-size */
+  font-size: clamp(0.85rem, 2vw, 1rem); /* flexible font size */
+  border-radius: 2.em;             /* rounded corners that scale */
+  border: 1px solid #2a3247;
+  background: #2a3247;
+  color: #e7e9ee;
+  transition: all 0.2s ease;
+  margin-left: 8px;
+  margin-top: auto;
+
+}
+.btn-outline {
+  background: transparent;
+}
+.btn-outline.active {
+  background: #2563eb;
+  border-color: #2563eb;
+  color: #fff;
+}
+.btn:hover { filter: brightness(1.05); }
+.btn-outline:hover { background: #1b2233; }
+
+
+/* ===== Hero Section ===== */
+.hero {
+  position: relative; /* Required for absolute positioning inside */
+   background-image: url('/assets/home_logo.jpg'); /* your banner image */
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #fff;
+  text-align: center;
+  padding: 4rem 2rem;
+  border-radius: 1rem;
+  margin-bottom: 2rem;
+  overflow: hidden;
+}
+
+/* ===== Scrolling Banner (BOTTOM) ===== */
+.scrolling-banner {
+  position: absolute;
+  bottom: 0;              /* <-- Moved from top: 0 to bottom: 0 */
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(5px);
+  border-top: 2px solid rgba(255, 255, 255, 0.15);
+  z-index: 3;
+  padding: 0.6rem 0;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
+
+/* Scrolling text animation */
+.scrolling-content {
+  display: inline-block;
+  animation: scrollLeft 25s linear infinite;
+  font-size: clamp(0.9rem, 2vw, 1.2rem);
+  font-weight: 600;
+}
+
+@keyframes scrollLeft {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+/* Text styles */
+.offer {
+  display: inline-block;
+  margin: 0 2rem;
+  color: #f8fafc;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.offer.highlight {
+  color: #ffcc00;
+  text-shadow: 0 0 10px #ffcc00, 0 0 20px #ff6b6b;
+  font-weight: 700;
+}
+
+.offer:hover {
+  color: #60a5fa;
+  transform: scale(1.08);
+}
+
+/* Accent for certain phrases */
+.offer.highlight {
+  color: #ffcc00;
+  text-shadow: 0 0 10px #ffcc00, 0 0 20px #ff6b6b;
+  font-weight: 700;
+}
+
+/* Hover effect for interactivity */
+.offer:hover {
+  color: #60a5fa;
+  transform: scale(1.08);
+}
+
+/* Mobile tweaks */
+@media (max-width: 600px) {
+  .scrolling-content {
+    animation-duration: 18s; /* faster scroll on smaller screens */
+  }
+  .offer {
+    margin: 0 1rem;
+  }
+}
+/* Card refinements */
+.card { box-shadow: 0 4px 14px rgba(0,0,0,0.25); }
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  color: #cbd5e1;
+  border: 1px solid #2a3247;
+}
+.empty-state {
+  padding: 24px;
+  text-align: center;
+  color: #a7b1c7;
+}
+
+/* Responsive grid tweaks */
+@media (max-width: 1024px) {
+  .grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+}
+@media (max-width: 768px) {
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 480px) {
+  .grid { grid-template-columns: 1fr; }
+}
+
+/* Skeleton loaders */
+.skeleton {
+  background: linear-gradient(90deg, #2a3247 25%, #313a52 37%, #2a3247 63%);
+  background-size: 400% 100%;
+  animation: shimmer 1.4s ease infinite;
+}
+@keyframes shimmer {
+  0% { background-position: 100% 0; }
+  100% { background-position: -100% 0; }
+}
+.sk-card { border-radius: 1rem; overflow: hidden; background: #1f2937; }
+.sk-img { height: 160px; }
+.sk-line { height: 12px; margin: 10px 14px; border-radius: 6px; }
