@@ -148,8 +148,6 @@ app.get("/api/products/:id", (req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`✅ Backend running on http://localhost:${PORT}`));
 
 const users = []; 
 const SECRET_KEY = "your_secret_key";
@@ -177,7 +175,7 @@ app.post("/api/login", async (req, res) => {
   res.json({ token,email });
 });
 
-// Protected route example
+
 app.get("/api/profile", (req, res) => {
   const token = req.headers["authorization"];
   if (!token) return res.status(401).json({ message: "Unauthorized" });
@@ -189,3 +187,4 @@ app.get("/api/profile", (req, res) => {
     res.status(401).json({ message: "Invalid token" });
   }
 });
+module.exports = app;
