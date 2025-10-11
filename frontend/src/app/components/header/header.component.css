@@ -1,0 +1,328 @@
+.cart-btn {
+  position: relative;
+}
+.cart-count {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  background: #f08804;
+  color: #fff;
+  border-radius: 999px;
+  font-size: 12px;
+  padding: 2px 6px;
+  line-height: 1;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.logo-img {
+  height: 70px; /* adjust as needed */
+  width: auto;
+}
+
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+}
+.mini-cart {
+  position: absolute;
+  right: 0;
+  top: 32px;
+  background: #0f172a;
+  border: 1px solid #1f2937;
+  color: #e5e7eb;
+  border-radius: 10px;
+  padding: 10px;
+  width: 320px;
+  display: none;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.4);
+}
+.cart-btn:focus-within .mini-cart,
+.cart-btn:hover .mini-cart {
+  display: block;
+}
+.mc-row {
+  display: grid;
+  grid-template-columns: 48px 1fr auto;
+  gap: 10px;
+  align-items: center;
+  padding: 6px 0;
+}
+.mc-row img { width: 48px; height: 48px; object-fit: cover; border-radius: 6px; }
+.mc-info .name { font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mc-info .muted { color: #9ca3af; font-size: 12px; }
+.mc-summary { display:flex; justify-content: space-between; padding-top: 8px; border-top:1px solid #1f2937; margin-top: 6px; }
+.mc-btn { display:inline-block; margin-top:8px; padding:8px 10px; border-radius:8px; background:#1f2937; color:#e5e7eb; text-align:center; margin-right:6px; }
+.mc-btn.primary { background:#2563eb; }
+.navbar {
+  position: sticky;
+  top: 0;
+  background: #12151c;
+  border-bottom: 1px solid #242938;
+  z-index: 10;
+}
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+}
+.brand {
+  font-size: 22px;
+  font-weight: 700;
+  color: #e7e9ee;
+}
+.links {
+  display: flex;
+  gap: 12px;
+}
+.btn-link {
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: transparent;
+  color: #e7e9ee;
+  border: 1px solid #2a3247;
+}
+.btn-link:hover { background: #1a1f2d; }
+.btn-primary {
+  padding: 8px 14px;
+  border-radius: 10px;
+  background: #4f7cff;
+  color: white;
+  font-weight: 600;
+}
+.btn-primary:hover { filter: brightness(1.05); }
+.header {
+  background: #111827; /* dark background */
+  border-bottom: 1px solid #1f2937;
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Logo */
+.logo {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #f9fafb;
+  text-decoration: none;
+}
+
+/* Navigation */
+.nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav a {
+  color: #9ca3af;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav a:hover,
+.nav a.active {
+  color: #2563eb;
+}
+
+/* Actions (Cart + Sign In) */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.cart-btn {
+  position: relative;
+  color: #9ca3af;
+  font-size: 1.2rem;
+  text-decoration: none;
+}
+
+.cart-btn:hover {
+  color: #2563eb;
+}
+
+.cart-count {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  background:#f08804; /* red */
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: bold;
+  border-radius: 9999px;
+  padding: 2px 6px;
+}
+
+/* Button */
+.btn-primary {
+  background: #2563eb;
+  color: #fff;
+  padding: 0.5rem 1.2rem;
+  border-radius: 0.5rem;
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn-primary:hover {
+  background: #1e40af;
+}
+/* =============================
+   AUTH DIALOG MODERN STYLING
+   ============================= */
+
+/* Background overlay */
+.auth-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+  z-index: 2000;
+}
+
+/* Dialog container */
+.auth-dialog {
+  background: #fff;
+  padding: 32px 40px;
+  border-radius: 16px;
+  width: 360px;
+  max-width: 90%;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+  animation: fadeIn 0.3s ease-out;
+  text-align: center;
+}
+
+.auth-dialog h2 {
+  margin-bottom: 24px;
+  color: #222;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+/* Inputs */
+.auth-dialog label {
+  display: block;
+  text-align: left;
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 6px;
+}
+
+.auth-dialog input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  font-size: 15px;
+  transition: all 0.2s;
+}
+
+.auth-dialog input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.4);
+  outline: none;
+}
+
+/* Buttons */
+.auth-dialog button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s;
+}
+
+.auth-dialog .btn-primary {
+  background: linear-gradient(135deg, #007bff, #0062e6);
+  color: #fff;
+  font-weight: 600;
+}
+
+.auth-dialog .btn-primary:hover {
+  background: linear-gradient(135deg, #0062e6, #004bb7);
+}
+
+.auth-dialog .btn-secondary {
+  background: #f3f3f3;
+  color: #333;
+}
+
+.auth-dialog .btn-secondary:hover {
+  background: #e0e0e0;
+}
+
+.auth-dialog button:active {
+  transform: scale(0.97);
+}
+
+/* Error messages */
+.error {
+  color: #e63946;
+  font-size: 13px;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+/* Switch link */
+.auth-switch {
+  margin-top: 16px;
+  font-size: 14px;
+  color: #555;
+}
+
+.auth-switch .link-btn {
+  background: none;
+  border: none;
+  color: #007bff;
+  font-weight: 600;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.auth-switch .link-btn:hover {
+  color: #004bb7;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-popup {
+  animation: fadeIn 0.3s ease-out;
+}

@@ -1,0 +1,12 @@
+<div class="toast-wrap">
+  @if (toast.toasts$ | async; as list) {
+    @for (t of list; track t.id) {
+      <div class="toast" [class.success]="t.type==='success'" [class.error]="t.type==='error'">
+        <span>{{ t.message }}</span>
+        <button (click)="toast.dismiss(t.id)">×</button>
+      </div>
+    }
+  }
+  
+</div>
+

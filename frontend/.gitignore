@@ -1,0 +1,11 @@
+# Node modules
+node_modules/
+backend/node_modules/
+
+# Build output
+dist/
+.angular/
+
+# Environment files
+src/environments/environment.ts
+src/environments/environment.prod.ts
