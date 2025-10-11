@@ -187,4 +187,7 @@ app.get("/api/profile", (req, res) => {
     res.status(401).json({ message: "Invalid token" });
   }
 });
+app.get("/", (req, res) => {
+  res.send("✅ Backend is running successfully on Vercel!");
+});
 module.exports = app;
