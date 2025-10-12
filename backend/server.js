@@ -136,10 +136,15 @@ const products = [
 
 // API endpoints
 app.get("/api/products", (req, res) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
   res.json(products);
 });
 
 app.get("/api/products/:id", (req, res) => {
+   // CORS headers for Vercel
+   res.setHeader("Access-Control-Allow-Origin", "*");
+   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
   const product = products.find(p => p.id === parseInt(req.params.id));
   if (product) {
     res.json(product);
@@ -190,4 +195,8 @@ app.get("/api/profile", (req, res) => {
 app.get("/", (req, res) => {
   res.send("✅ Backend is running successfully on Vercel!");
 });
+if (require.main === module) {
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
+}
 module.exports = app;
