@@ -145,6 +145,7 @@ app.get("/api/products/:id", (req, res) => {
    // CORS headers for Vercel
    res.setHeader("Access-Control-Allow-Origin", "*");
    res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+   console.log("GET /api/products called. Authorization header:", req.headers.authorization);
   const product = products.find(p => p.id === parseInt(req.params.id));
   if (product) {
     res.json(product);
