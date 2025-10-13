@@ -4,8 +4,8 @@ const cors = require("cors");
 const app = express();
 const allowedOrigins = [
   "http://localhost:4200", // for local dev
-  "https://hebaecommerce.vercel.app" // Deployed frontend on Vercel
-  "https://hebaecommerce-hemalathas-projects-4e5989bd.vercel.app" 
+  "https://hebaecommerce.vercel.app",
+  "https://hebaecommerce-hemalathas-projects-4e5989bd.vercel.app"
 ];
 
 app.use(
