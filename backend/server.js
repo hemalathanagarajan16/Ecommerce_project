@@ -2,20 +2,35 @@ const express = require("express");
 const cors = require("cors");
 
 const app = express();
-const allowedOrigins = [
-  "http://localhost:4200", // for local dev
-  "https://hebaecommerce.vercel.app",
-  "https://hebaecommerce-hemalathas-projects-4e5989bd.vercel.app"
-];
+// const allowedOrigins = [
+//   "http://localhost:4200", // for local dev
+//   "https://hebaecommerce.vercel.app",
+//   "https://hebaecommerce-hemalathas-projects-4e5989bd.vercel.app"
+// ];
 
 app.use(
   cors({
     origin: function (origin, callback) {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
+      if (!origin) {
+        // Allow requests like curl/Postman or server-to-server
+        return callback(null, true);
+      }
+
+      try {
+        const hostname = new URL(origin).hostname;
+
+        if (
+          hostname === "hebaecommerce.vercel.app" || // main production domain
+          /\.vercel\.app$/.test(hostname) // all Vercel preview domains
+        ) {
+          return callback(null, true);
+        }
+
         console.error("❌ Blocked by CORS:", origin);
-        callback(new Error("Not allowed by CORS"));
+        return callback(new Error("Not allowed by CORS"));
+      } catch (err) {
+        console.error("❌ Invalid origin:", origin);
+        return callback(new Error("Not allowed by CORS"));
       }
     },
     credentials: true,
