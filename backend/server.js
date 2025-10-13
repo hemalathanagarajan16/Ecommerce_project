@@ -2,7 +2,26 @@ const express = require("express");
 const cors = require("cors");
 
 const app = express();
-app.use(cors());
+const allowedOrigins = [
+  "http://localhost:4200", // for local dev
+  "https://hebaecommerce.vercel.app" // Deployed frontend on Vercel
+];
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        console.error("❌ Blocked by CORS:", origin);
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
+  })
+);
+
+
 app.use(express.json());
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
@@ -136,15 +155,10 @@ const products = [
 
 // API endpoints
 app.get("/api/products", (req, res) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
   res.json(products);
 });
 
 app.get("/api/products/:id", (req, res) => {
-   // CORS headers for Vercel
-   res.setHeader("Access-Control-Allow-Origin", "*");
-   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
   const product = products.find(p => p.id === parseInt(req.params.id));
   if (product) {
     res.json(product);
@@ -196,7 +210,7 @@ app.get("/", (req, res) => {
   res.send("✅ Backend is running successfully on Vercel!");
 });
 if (require.main === module) {
-  const PORT = process.env.PORT || 3000;
+  const PORT = process.env.PORT || 5000;
   app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
 }
 module.exports = app;
